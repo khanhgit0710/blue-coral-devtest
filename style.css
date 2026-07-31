@@ -1111,6 +1111,12 @@ ul {
         font-weight: 700 !important;
     }
 
+    .main-tab-btn.active:hover {
+        background: #2D2F33;
+        color: var(--white);
+    }
+
+
     .main-tab-btn.active::after {
         content: "\f078";
         font-family: "Font Awesome 6 Free";
@@ -1119,7 +1125,7 @@ ul {
     }
 
     .main-tabs-dropdown-list {
-        display: none;
+        display: flex;
         position: absolute;
         top: 48px;
         left: 12px;
@@ -1131,10 +1137,18 @@ ul {
         flex-direction: column;
         padding: 0;
         overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
     }
 
     .main-tabs-dropdown-list.show {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .main-tabs-dropdown-item {
@@ -1445,11 +1459,11 @@ ul {
 
 /* Mobile V-Tabs Dropdown */
 .mobile-v-tabs-dropdown-list {
-    display: none;
+    display: flex;
     position: absolute;
     top: calc(100% + 8px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-10px);
     width: 302px;
     max-width: calc(100vw - 48px);
     background: #fff;
@@ -1459,10 +1473,17 @@ ul {
     padding: 0;
     flex-direction: column;
     overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
 .mobile-v-tabs-dropdown-list.show {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
 }
 
 .mobile-v-tabs-dropdown-item {

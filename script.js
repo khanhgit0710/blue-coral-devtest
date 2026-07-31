@@ -232,8 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
             
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
-                tab.click();
+                
+                // Close dropdown
                 mainDropdownList.classList.remove('show');
+                
+                // Update main tabs
+                mainTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                updatePillPosition(tab);
+                
+                // Update dropdown items
                 mainDropdownList.querySelectorAll('.main-tabs-dropdown-item').forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
             });
