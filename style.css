@@ -1178,13 +1178,13 @@ ul {
         background-size: 350px 350px;
         background-position: top left;
         opacity: 0.35;
-        -webkit-mask-image: radial-gradient(circle at 50% 0%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
-        mask-image: radial-gradient(circle at 50% 0%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+        -webkit-mask-image: radial-gradient(circle at 0% 0%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+        mask-image: radial-gradient(circle at 0% 0%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
     }
 
     .decor-grid-pattern.grid-bottom-right {
-        -webkit-mask-image: radial-gradient(circle at 50% 100%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
-        mask-image: radial-gradient(circle at 50% 100%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+        -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+        mask-image: radial-gradient(circle at 100% 100%, black 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
         background-position: bottom right;
     }
     .mobile-v-tabs-toggle {
