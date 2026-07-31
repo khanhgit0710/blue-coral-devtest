@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Q table</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            background-image: radial-gradient(circle at top left, rgba(184, 255, 69, 0.15), transparent 40%),
+                              radial-gradient(circle at bottom right, rgba(184, 255, 69, 0.15), transparent 40%);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 480px;
+            padding: 32px 48px;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .login-header .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .login-header .logo svg {
+            width: 180px;
+            height: auto;
+        }
+
+        .login-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-family: var(--font-main);
+        }
+
+        .login-subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-family: var(--font-main);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--dark);
+            font-size: 14px;
+            font-family: var(--font-main);
+        }
+
+        .form-control {
+            width: 100%;
+            height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0 16px;
+            font-family: var(--font-main);
+            font-size: 14px;
+            transition: all 0.2s;
+            background: #FAFAFA;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--dark);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(45, 47, 51, 0.05);
+        }
+
+        .btn-login {
+            width: 100%;
+            height: 44px;
+            border: none;
+            background: var(--dark);
+            color: var(--white);
+            border-radius: 12px;
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 24px 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-family: var(--font-main);
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider::before { margin-right: 16px; }
+        .divider::after { margin-left: 16px; }
+
+        .social-logins {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-social:hover {
+            background: #FAFAFA;
+            border-color: var(--dark);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: var(--font-main);
+        }
+
+        .login-footer a {
+            color: var(--dark);
+            font-weight: 700;
+            text-decoration: underline;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        
+        .login-footer a:hover {
+            color: #8cc433;
+            text-decoration-color: #8cc433;
+        }
+        
+        .social-icon {
+            font-size: 20px;
+        }
+        
+        .icon-fb { color: #1877F2; }
+        .icon-google {
+            background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-phone { color: #34A853; }
+        
+        /* Animation */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-card {
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        /* Dotted pattern fading out at corners */
+        .login-card::before,
+        .login-card::after {
+            content: '';
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            background-image: radial-gradient(rgba(184, 255, 69, 0.8) 2px, transparent 2px);
+            background-size: 16px 16px;
+            z-index: 0;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+        }
+
+        .login-card::before {
+            top: -60px;
+            left: -60px;
+        }
+
+        .login-card::after {
+            bottom: -60px;
+            right: -60px;
+        }
+        
+        .login-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            background-color: var(--white);
+        }
+        
+        .custom-checkbox:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: 12px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Hover Links */
+        .text-link {
+            font-size: 14px;
+            color: var(--dark);
+            font-weight: 600;
+            text-decoration: underline;
+            font-family: var(--font-main);
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        
+        .text-link:hover {
+            color: #8cc433;
+            text-decoration-color: #8cc433;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-page">
+        <!-- Decor Grid Pattern -->
+        <div class="decor decor-grid-pattern grid-top-left"></div>
+        <div class="decor decor-grid-pattern grid-bottom-right"></div>
+        
+        <div class="login-card">
+            <div class="login-header">
+                <a href="index.html" class="logo" aria-label="Trang chủ Q table">
+                    <svg width="140" height="48" viewBox="0 0 140 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="23.9655" cy="24" rx="23.9655" ry="24" fill="#BFFB4F" />
+                        <path d="M10.9557 22.8637C10.9573 16.7617 15.3369 11.5582 21.3781 10.4822C28.0781 9.28837 34.5932 13.7991 35.8164 20.5515C36.5995 24.8731 35.4029 28.628 32.3309 31.7798C32.1884 31.9258 32.0839 32.178 32.0806 32.3821C32.0599 33.9443 32.0715 35.5065 32.0682 37.0687C32.0665 37.7225 31.9025 37.8469 31.2942 37.5905C29.5564 36.8588 27.8303 36.098 26.0909 35.3696C25.8563 35.2717 25.5655 35.2394 25.3102 35.2684C20.3572 35.8242 16.3314 34.1633 13.3257 30.1769C11.7197 28.0456 10.9557 25.4978 10.9557 22.8637ZM23.4979 29.3473C23.6769 29.3348 23.8559 29.3224 24.0349 29.31C25.9019 29.1739 27.3878 28.365 28.393 26.7663C29.36 25.2273 29.578 23.5315 29.3625 21.7528C29.0485 19.1594 27.3977 16.7177 24.1807 16.3909C21.8065 16.1494 19.4812 17.077 18.3186 19.463C17.6125 20.9116 17.4692 22.4373 17.6523 24.021C18.0252 27.2392 20.3132 29.334 23.4979 29.3473Z" fill="#2D2F33" />
+                        <path d="M95.8463 32.7348C95.7278 33.2459 95.6043 33.7105 95.5156 34.1825C95.4394 34.5874 95.219 34.789 94.8113 34.7907C93.3478 34.7956 91.8835 34.7973 90.42 34.8056C90.1913 34.8072 90.0902 34.7118 90.101 34.4853C90.106 34.375 90.1002 34.2638 90.1002 34.1535C90.1002 26.4528 90.1002 18.7521 90.1002 11.0506C90.1002 10.9677 90.1093 10.8839 90.1002 10.8017C90.0529 10.4126 90.1988 10.2799 90.6081 10.2857C92.21 10.3098 93.8119 10.3073 95.4137 10.2874C95.8131 10.2824 95.9358 10.4077 95.9341 10.8059C95.92 13.474 95.9267 16.1429 95.9267 18.811C95.9267 18.8658 95.9267 18.9206 95.9267 18.9753C95.9623 18.977 95.9996 18.9878 96.0054 18.9786C96.9783 17.4256 98.5056 16.8249 100.21 16.7245C102.995 16.5611 105.408 17.4347 107.187 19.6896C108.229 21.0112 108.759 22.5494 108.957 24.2136C109.2 26.2487 109.042 28.2349 108.277 30.1505C106.862 33.6897 103.571 35.359 100.079 34.9591C98.7028 34.8014 97.454 34.3476 96.4338 33.372C96.2457 33.1919 96.0792 32.9887 95.8471 32.7365L95.8463 32.7348ZM99.6359 29.6311C101.663 29.6311 103.207 28.0316 103.214 25.9235C103.222 23.7748 101.698 22.1926 99.6259 22.1976C97.5443 22.2026 96.0957 23.7241 96.0957 25.9086C96.0957 28.0582 97.5915 29.632 99.6359 29.632V29.6311Z" fill="#2D2F33" />
+                        <path d="M79.9255 19.3329C79.9255 18.6625 79.9379 18.032 79.9205 17.4023C79.9114 17.058 80.0108 16.9045 80.3871 16.9079C82.0718 16.9228 83.7557 16.9211 85.4404 16.9095C85.7868 16.907 85.8979 17.0464 85.8979 17.3758C85.8929 22.9883 85.8954 28.5999 85.8929 34.2124C85.8929 34.706 85.8208 34.7716 85.3501 34.7716C83.8311 34.7724 82.3121 34.7732 80.794 34.7716C80.2909 34.7716 80.2487 34.7276 80.2429 34.2298C80.2363 33.6499 80.2329 33.0692 80.2271 32.4892C80.2271 32.4834 80.2048 32.4785 80.1642 32.4594C79.4225 33.9693 78.0817 34.6496 76.5212 34.9018C73.1534 35.4469 69.4799 34.0755 67.8788 30.4575C66.4386 27.2028 66.4468 23.8868 68.2584 20.7524C69.7873 18.1059 72.159 16.6888 75.2442 16.7079C77.1718 16.7195 78.7786 17.487 79.7979 19.23C79.8153 19.2607 79.8559 19.2773 79.9255 19.3312V19.3329ZM72.7855 25.9177C72.7548 28.1088 74.3642 29.6967 76.5461 29.6295C78.3178 29.5747 79.6852 28.2755 79.8857 26.306C80.1484 23.7233 78.2913 21.7919 75.5782 22.2806C73.8379 22.5942 72.8128 23.9863 72.7855 25.9177Z" fill="#2D2F33" />
+                        <path d="M127.696 27.3414C127.594 28.4307 128.27 29.5175 129.335 30.0435C130.942 30.8366 132.784 30.5114 134.18 29.189C134.22 29.1508 134.262 29.1143 134.297 29.072C134.829 28.439 134.883 28.5053 135.339 29.1516C136.039 30.1439 136.726 31.1452 137.408 32.1507C137.819 32.758 137.79 32.9323 137.202 33.3811C136.144 34.1883 134.936 34.682 133.654 34.9906C131.506 35.5075 129.38 35.4162 127.318 34.6065C124.715 33.5835 123.05 31.6662 122.294 28.9965C121.59 26.5101 121.643 24.0253 122.683 21.6243C123.857 18.9139 125.969 17.326 128.812 16.6988C130.797 16.2607 132.769 16.3329 134.641 17.2016C137.181 18.3796 138.613 20.4064 139.017 23.1617C139.194 24.3704 139.169 25.5809 138.949 26.7888C138.879 27.1729 138.708 27.353 138.322 27.3372C138.143 27.3297 137.963 27.3414 137.783 27.3414C134.593 27.3414 131.404 27.3414 128.214 27.3414H127.696ZM127.68 24.2111H133.606C133.408 22.1843 132.325 21.1921 130.402 21.2469C128.924 21.2892 127.752 22.5593 127.68 24.2111Z" fill="#2D2F33" />
+                        <path d="M61.275 16.9386C62.2064 16.9386 63.1006 16.9386 63.9939 16.9386C64.5889 16.9386 64.6072 16.9568 64.608 17.5351C64.608 18.641 64.6096 19.7469 64.608 20.8528C64.6063 21.4485 64.5558 21.4974 63.9749 21.4974C63.0931 21.4974 62.2122 21.4974 61.3023 21.4974C61.2907 21.6086 61.27 21.7139 61.27 21.8193C61.2684 23.8652 61.2717 25.9111 61.2675 27.9569C61.2659 28.6522 61.4192 29.2794 62.025 29.7008C62.5951 30.0974 63.2431 30.0908 63.897 30.0136C64.047 29.9962 64.1961 29.9655 64.3461 29.9456C64.6304 29.9074 64.8002 30.0418 64.8442 30.3156C65.029 31.4588 65.2204 32.6021 65.3687 33.7503C65.3894 33.9104 65.2212 34.18 65.0671 34.2647C62.9829 35.3996 60.7977 35.5863 58.5569 34.8263C56.7371 34.2091 55.8007 32.8087 55.5057 30.9868C55.3283 29.8883 55.2761 28.7625 55.2537 27.6475C55.2148 25.7543 55.243 23.8602 55.243 21.9661C55.243 21.8185 55.243 21.67 55.243 21.4808C54.7739 21.4808 54.3496 21.47 53.9253 21.4841C53.5649 21.4957 53.4024 21.3738 53.4091 20.9805C53.429 19.8199 53.4149 18.6584 53.4165 17.4969C53.4174 16.9858 53.4687 16.9394 53.9974 16.9386C54.3952 16.9377 54.7938 16.9386 55.3093 16.9386C55.3093 16.2383 55.3043 15.5663 55.3109 14.8943C55.3184 14.1062 55.3391 13.3189 55.3465 12.5307C55.3499 12.1823 55.4634 12.018 55.8612 12.0238C57.4075 12.0462 58.9538 12.0313 60.5002 12.0338C61.1416 12.0346 61.3264 12.2345 61.3181 12.885C61.3023 14.1153 61.2891 15.3457 61.275 16.5752C61.2742 16.6814 61.275 16.7884 61.275 16.9377V16.9386Z" fill="#2D2F33" />
+                        <path d="M118.634 22.5344C118.634 26.4039 118.634 30.2733 118.634 34.1427C118.634 34.5625 118.419 34.7727 117.988 34.7732C116.4 34.7732 114.813 34.7732 113.226 34.7732C112.645 34.7732 112.641 34.7732 112.641 34.1759C112.641 28.4132 112.641 22.6506 112.641 16.8879C112.641 14.8562 112.651 12.8252 112.633 10.7934C112.63 10.3886 112.756 10.2816 113.15 10.2865C114.793 10.3073 116.435 10.2948 118.078 10.2957C118.631 10.2957 118.634 10.2973 118.634 10.8432C118.634 14.74 118.634 18.6376 118.634 22.5344Z" fill="#2D2F33" />
+                    </svg>
+                </a>
+                <h1 class="login-title">Đăng nhập</h1>
+                <p class="login-subtitle">Rất vui được gặp lại bạn</p>
+            </div>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="username" class="form-label">Tên đăng nhập hoặc Email</label>
+                    <input type="text" id="username" class="form-control" placeholder="Nhập tên đăng nhập của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                </div>
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; margin-top: -8px; margin-bottom: 24px;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; font-family: var(--font-main);">
+                        <input type="checkbox" class="custom-checkbox"> Ghi nhớ đăng nhập
+                    </label>
+                    <a href="#" class="text-link">Quên mật khẩu?</a>
+                </div>
+                <button type="submit" class="btn-login">Đăng nhập</button>
+            </form>
+
+            <div class="divider">HOẶC ĐĂNG NHẬP VỚI</div>
+
+            <div class="social-logins">
+                <button class="btn-social" aria-label="Đăng nhập bằng Google">
+                    <i class="fa-brands fa-google icon-google social-icon"></i>
+                </button>
+                <button class="btn-social" aria-label="Đăng nhập bằng Facebook">
+                    <i class="fa-brands fa-facebook icon-fb social-icon"></i>
+                </button>
+                <button class="btn-social" aria-label="Đăng nhập bằng Số điện thoại">
+                    <i class="fa-solid fa-phone icon-phone social-icon"></i>
+                </button>
+            </div>
+
+            <div class="login-footer">
+                Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
