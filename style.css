@@ -553,13 +553,13 @@ ul {
 
 .main-tabs::before {
     left: -32px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M 0 0 A 32 32 0 0 0 32 32 L 32 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M 0 0 L 32 0 L 32 32 A 32 32 0 0 0 0 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
     background-size: cover;
 }
 
 .main-tabs::after {
     right: -32px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M 32 0 A 32 32 0 0 1 0 32 L 0 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M 32 0 L 0 0 L 0 32 A 32 32 0 0 1 32 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
     background-size: cover;
 }
 
@@ -1061,13 +1061,13 @@ ul {
 
     .main-tabs::before {
         left: -24px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M 0 0 A 24 24 0 0 0 24 24 L 24 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M 0 0 L 24 0 L 24 24 A 24 24 0 0 0 0 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
         background-size: cover;
     }
 
     .main-tabs::after {
         right: -24px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M 24 0 A 24 24 0 0 1 0 24 L 0 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M 24 0 L 0 0 L 0 24 A 24 24 0 0 1 24 0 Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
         background-size: cover;
     }
 
@@ -1158,7 +1158,7 @@ ul {
         gap: 24px;
         height: auto;
         min-height: 566px;
-        margin-top: -52px; /* 40px button + 12px bottom padding */
+        margin-top: -60px; /* 48px button + 12px bottom padding */
         width: 350px;
         max-width: 100%;
         overflow: visible;
@@ -1196,21 +1196,22 @@ ul {
         background: var(--white);
         border: none;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        padding: 0 12px;
-        height: 40px;
+        padding: 0 20px;
+        height: 48px;
         border-radius: 60px;
         font-family: var(--font-main);
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         cursor: pointer;
         color: var(--text-main);
         gap: 10px;
-        line-height: 20px;
-        margin-top: 8px;
+        line-height: 24px;
+        margin-top: 16px;
     }
 
     .mobile-v-tabs-dropdown-item {
-        padding: 14px !important; 
+        padding: 14px 20px !important; 
+        font-size: 16px !important;
     }
 
 
@@ -1245,8 +1246,10 @@ ul {
     }
 
     .v-tab.active h3 {
-        font-size: 24px;
-        margin-bottom: 12px;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 8px;
         width: 100%;
         line-height: 1.4;
     }
