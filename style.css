@@ -1054,16 +1054,17 @@ ul {
         display: block;
         width: 24px;
         height: 24px;
+        background-color: transparent;
     }
 
     .main-tabs::before {
         left: -24px;
-        background: radial-gradient(circle at 0% 100%, transparent 24px, var(--white) 24px);
+        background: radial-gradient(circle at bottom left, transparent 24px, var(--white) 24px);
     }
 
     .main-tabs::after {
         right: -24px;
-        background: radial-gradient(circle at 100% 100%, transparent 24px, var(--white) 24px);
+        background: radial-gradient(circle at bottom right, transparent 24px, var(--white) 24px);
     }
 
     .active-pill {
@@ -1130,8 +1131,8 @@ ul {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 12px;
-        height: 56px;
+        gap: 8px;
+        height: 48px;
     }
 
     .main-tabs-dropdown-item:hover,
