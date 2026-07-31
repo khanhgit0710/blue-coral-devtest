@@ -690,6 +690,18 @@ ul {
     pointer-events: none;
 }
 
+.decor-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .tabs-content-box .decor.top-left {
     top: 0;
     left: 0;
@@ -1170,18 +1182,6 @@ ul {
 
     .decor {
         display: block;
-    }
-
-    .decor-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: inherit;
-        overflow: hidden;
-        z-index: 0;
-        pointer-events: none;
     }
 
     .decor-grid-pattern {
